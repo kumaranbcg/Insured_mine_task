@@ -1,0 +1,190 @@
+{
+    "openapi": "3.0.0",
+    "info": { "title": "", "contact": {}, "version": "v1" },
+    "servers": [],
+    "security": [{ "Authorization": [], "token": [] }],
+    "tags": ["InsuredMine_Task_API's"],
+    "paths": {
+        "/insuredMine/v1/api/excelMigrate": {
+            "post": {
+                "tags": ["InsuredMine_Task_API's"],
+                "summary": "Excel Migrate",
+                "operationId": "ExcelMigrate",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UploadDocRequest"
+                            },
+                            "encoding": {}
+                        }
+                    },
+                    "required": false
+                },
+                "responses": {
+                    "200": { "description": "OK" }
+                },
+                "deprecated": false
+            }
+        },
+        "/insuredMine/v1/api/getPolicyInfo": {
+            "get": {
+                "tags": ["InsuredMine_Task_API's"],
+                "summary": "Get Policy Info",
+                "operationId": "GetPolicyInfo",
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "in": "query",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": ""
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": { "description": "OK" }
+                },
+                "deprecated": false
+            }
+        },
+        "/insuredMine/v1/api/getUsersPolicy": {
+            "get": {
+                "tags": ["InsuredMine_Task_API's"],
+                "summary": "Get Users Policy",
+                "operationId": "GetUsersPolicy",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": { "description": "OK" }
+                },
+                "deprecated": false
+            }
+        },
+        "/insuredMine/v1/api/insertMessage": {
+            "post": {
+                "tags": ["InsuredMine_Task_API's"],
+                "summary": "Insert Message",
+                "operationId": "InsertMessage",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InsertMessageRequest"
+                            },
+                            "example": {
+                                "message": "my message",
+                                "dateTime": "1995-10-15T18:30:00.000Z"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": { "description": "OK" }
+                },
+                "deprecated": false
+            }
+        },
+        "/insuredMine/v1/api/getMessage": {
+            "get": {
+                "tags": ["InsuredMine_Task_API's"],
+                "summary": "Get Message",
+                "operationId": "GetMessage",
+                "parameters": [],
+                "responses": {
+                    "200": { "description": "OK" }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UploadDocRequest": {
+                "required": ["file"],
+                "type": "object",
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
+            "InsertMessageRequest": {
+                "title": "InsertMessageRequest",
+                "required": ["message", "dateTime"],
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "dateTime": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "message": "my message",
+                    "dateTime": "1995-10-15T18:30:00.000Z"
+                }
+            }
+        },
+        "securitySchemes": {
+            "Authorization": { "type": "http", "scheme": "bearer" },
+            "token": { "type": "http", "scheme": "bearer" }
+        }
+    }
+}
