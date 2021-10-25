@@ -9,5 +9,7 @@ router.get("/getPolicyInfo", validators.getPolicyInfo, controller.getPolicyInfo)
 router.get("/getUsersPolicy", validators.getUsersPolicy, controller.getUsersPolicy);
 router.post("/insertMessage", validators.insertMessage, controller.insertMessage);
 router.get("/getMessage", controller.getMessage);
+router.post("/insertMessageTwo", validators.insertMessage, controller.insertMessageTwo);
+router.get("/getMessageTwo", controller.getMessageTwo);
 
 module.exports = router;

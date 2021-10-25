@@ -6,6 +6,8 @@ const PolicyInfoModel = require("../models/PolicyInfoModel");
 const UserModel = require("../models/UserModel");
 const CollectionOneModel = require("../models/CollectionOneModel");
 const CollectionTwoModel = require("../models/CollectionTwoModel");
+const CollectionThreeModel = require("../models/CollectionThreeModel");
+const CollectionFourModel = require("../models/CollectionFourModel");
 const fs = require("fs");
 
 class Service {
@@ -203,7 +205,10 @@ class Service {
     }
     async insertMessageService(params) {
         try {
-            await CollectionOneModel.create({ ...params });
+            await CollectionOneModel.create({
+                message: params.message,
+                dateTime: new Date(params.dateTime),
+            });
             return { code: errorCodes.HTTP_OK, message: messages.success };
         } catch (err) {
             return { code: errorCodes.HTTP_INTERNAL_SERVER_ERROR, message: err };
@@ -212,6 +217,25 @@ class Service {
     async getMessageService() {
         try {
             const data = await CollectionTwoModel.find();
+            return { code: errorCodes.HTTP_OK, message: messages.success, data };
+        } catch (err) {
+            return { code: errorCodes.HTTP_INTERNAL_SERVER_ERROR, message: err };
+        }
+    }
+    async insertMessageTwoService(params) {
+        try {
+            await CollectionThreeModel.create({
+                message: params.message,
+                dateTime: new Date(params.dateTime),
+            });
+            return { code: errorCodes.HTTP_OK, message: messages.success };
+        } catch (err) {
+            return { code: errorCodes.HTTP_INTERNAL_SERVER_ERROR, message: err };
+        }
+    }
+    async getMessageTwoService() {
+        try {
+            const data = await CollectionFourModel.find();
             return { code: errorCodes.HTTP_OK, message: messages.success, data };
         } catch (err) {
             return { code: errorCodes.HTTP_INTERNAL_SERVER_ERROR, message: err };

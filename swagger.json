@@ -127,7 +127,7 @@
                             },
                             "example": {
                                 "message": "my message",
-                                "dateTime": "1995-10-15T18:30:00.000Z"
+                                "dateTime": "October 25, 2021 12:33:00"
                             }
                         }
                     },
@@ -144,6 +144,44 @@
                 "tags": ["InsuredMine_Task_API's"],
                 "summary": "Get Message",
                 "operationId": "GetMessage",
+                "parameters": [],
+                "responses": {
+                    "200": { "description": "OK" }
+                },
+                "deprecated": false
+            }
+        },
+        "/insuredMine/v1/api/insertMessageTwo": {
+            "post": {
+                "tags": ["InsuredMine_Task_API's"],
+                "summary": "Insert Message Two",
+                "operationId": "InsertMessageTwo",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InsertMessageRequest"
+                            },
+                            "example": {
+                                "message": "my message",
+                                "dateTime": "October 25, 2021 12:33:00"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": { "description": "OK" }
+                },
+                "deprecated": false
+            }
+        },
+        "/insuredMine/v1/api/getMessageTwo": {
+            "get": {
+                "tags": ["InsuredMine_Task_API's"],
+                "summary": "Get Message Two",
+                "operationId": "GetMessageTwo",
                 "parameters": [],
                 "responses": {
                     "200": { "description": "OK" }

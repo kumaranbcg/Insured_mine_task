@@ -4,5 +4,6 @@ mongoose.connect(config.host, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
+    useCreateIndex: true,
 });
 module.exports = mongoose;

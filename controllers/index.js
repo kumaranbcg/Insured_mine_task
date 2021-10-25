@@ -42,5 +42,21 @@ class Controller {
             response.error(req, res, errorCodes.HTTP_INTERNAL_SERVER_ERROR, err);
         }
     }
+    async insertMessageTwo(req, res) {
+        try {
+            const result = await service.insertMessageTwoService({ ...req.body });
+            response.success(req, res, result.code, result.data, result.message);
+        } catch (err) {
+            response.error(req, res, errorCodes.HTTP_INTERNAL_SERVER_ERROR, err);
+        }
+    }
+    async getMessageTwo(req, res) {
+        try {
+            const result = await service.getMessageTwoService();
+            response.success(req, res, result.code, result.data, result.message);
+        } catch (err) {
+            response.error(req, res, errorCodes.HTTP_INTERNAL_SERVER_ERROR, err);
+        }
+    }
 }
 module.exports = new Controller();
